@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <title>rose-white | قاعة أفراح ومناسبات</title>
+    <meta name="description"
+        content="قاعة rose-white لإقامة أحلى الأفراح والمناسبات الخاصة، أفراح، خطوبة، وأعياد ميلاد بأعلى مستوى من الخدمة والرفاهية.">
+    <meta name="keywords"
+        content="rose-white, rose white, قاعة افراح, قاعات مناسبات, حجز قاعات زفاف, قاعة خطوبة, اسعار قاعات الافراح">
+
+    <meta property="og:title" content="rose-white">
+    <meta property="og:description" content="قاعة أفراح ومناسبات راقية لإقامة أجمل اللحظات.">
+    <meta property="og:url" content="https://rose-white.pages.dev">
+    <meta property="og:type" content="website">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose White - قاعة المناسبات الفاخرة</title>
+    <meta name="google-site-verification" content="CWdET6kMuI9my1_8wirZH-GzNEGH_uu2Qsga3LlXb80" />
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23121212' stroke='%23D4AF37' stroke-width='3'/><text x='50%' y='62%' text-anchor='middle' fill='%23D4AF37' font-family='serif' font-size='42' font-weight='bold'>RW</text></svg>">
+
+    <!-- ربط ملفات الـ CSS الخاصة بك -->
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Alex+Brush&family=Cairo:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        tailwind = { config: { suppressWarnings: true } };
+    </script>
+</head>
+
+<body class="relative min-h-screen flex flex-col justify-between bg-offwhite">
+
+    <!-- Navigation Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-40 bg-charcoal/90 backdrop-blur-md text-white border-b border-gold-400/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <div
+                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gold-400 flex items-center justify-center text-gold-400 font-cursive text-xl sm:text-2xl font-bold">
+                    RW
+                </div>
+                <span
+                    class="font-amiri text-lg sm:text-xl tracking-wider text-gold-300 font-semibold hidden sm:inline">ROSE
+                    WHITE</span>
+            </div>
+
+            <nav
+                class="flex items-center gap-3 sm:gap-8 text-xs sm:text-sm font-medium overflow-x-auto py-2 no-scrollbar">
+                <a href="#hero" class="hover:text-gold-400 transition-colors shrink-0">القاعة</a>
+                <a href="#gallery" class="hover:text-gold-400 transition-colors shrink-0">المعرض</a>
+                <a href="#services" class="hover:text-gold-400 transition-colors shrink-0">الخدمات</a>
+                <a href="#location" class="hover:text-gold-400 transition-colors shrink-0">الموقع</a>
+                <a href="#contact" class="hover:text-gold-400 transition-colors shrink-0">تواصل معنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden px-4">
+        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 scale-105"
+            style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000');">
+        </div>
+
+        <div class="absolute inset-0 hero-overlay"></div>
+
+        <div class="relative z-10 text-center w-full max-w-4xl mx-auto flex flex-col items-center">
+            <div
+                class="w-16 h-16 sm:w-24 sm:h-24 mb-4 sm:mb-6 rounded-full border-2 border-gold-400/60 flex items-center justify-center p-2 bg-charcoal/40 backdrop-blur-sm animate-hero-text">
+                <span class="text-gold-400 font-cursive text-3xl sm:text-5xl">Rw</span>
+            </div>
+
+            <h1
+                class="text-3xl sm:text-6xl md:text-7xl font-bold tracking-wider font-serif gold-gradient-text mb-4 leading-tight animate-hero-text">
+                ROSE WHITE
+            </h1>
+
+            <p
+                class="text-lg sm:text-2xl text-gray-200 font-amiri font-light tracking-wide animate-hero-sub max-w-lg mb-8 px-2 leading-relaxed">
+                حيث تبدأ أجمل اللحظات والذكريات الخالدة
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center animate-hero-sub px-4">
+                <a href="order.html"
+                    class="inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-charcoal font-bold shadow-lg hover:shadow-gold-400/30 hover:scale-105 transition-all duration-300 text-sm sm:text-base">
+                    <span>احجز موعدك الآن</span>
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                </a>
+                <a href="#location" target="_self"
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-black/40 border border-gold-400/40 text-gold-300 font-semibold hover:bg-gold-400 hover:text-charcoal transition-all duration-300 text-sm sm:text-base">
+                    <span>موقع القاعة</span>
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="pt-24 pb-16 px-4 sm:px-6 max-w-4xl mx-auto w-full">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-charcoal mb-3">القاعة ومعرض الصور</h2>
+            <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-3"></div>
+            <p class="text-gray-600 max-w-xl mx-auto text-xs sm:text-sm">قاعة عصرية ومجهزة بأحدث التجهيزات لاستقبال جميع
+                مناسباتكم السعيدة</p>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="relative w-full bg-charcoal rounded-2xl overflow-hidden shadow-2xl border border-gold-400/30">
+            <div class="swiper mySwiper w-full">
+                <div id="swiper-wrapper" class="swiper-wrapper">
+                    <!-- Dynamic Slides -->
+                </div>
+
+                <!-- أزرار التنقل -->
+                <div class="swiper-button-next !text-gold-400"></div>
+                <div class="swiper-button-prev !text-gold-400"></div>
+
+                <!-- نقاط الأسفل -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-charcoal mb-3">الخدمات</h2>
+                <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-xl mx-auto">نقدم مجموعة متكاملة من الخدمات الفاخرة لضمان نجاح مناسبتكم</p>
+            </div>
+
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="bg-offwhite p-8 rounded-2xl border border-gold-400/20 hover:border-gold-400 transition-all text-center group">
+                    <div
+                        class="w-16 h-16 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal mb-3">تنسيق الديكور والإضاءة</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">تجهيزات حديثة وديكورات مخصصة تناسب ذوقكم الرفيع
+                        بأحدث تقنيات الإضاءة.</p>
+                </div>
+
+                <div
+                    class="bg-offwhite p-8 rounded-2xl border border-gold-400/20 hover:border-gold-400 transition-all text-center group">
+                    <div
+                        class="w-16 h-16 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="utensils" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal mb-3">خدمات الضيافة والبوفيه</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">قوائم طعام متنوعة وأطعمة فاخرة يُعدها أفضل الطهاة
+                        مع فريق ضيافة مدرب.</p>
+                </div>
+
+                <div
+                    class="bg-offwhite p-8 rounded-2xl border border-gold-400/20 hover:border-gold-400 transition-all text-center group">
+                    <div
+                        class="w-16 h-16 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="music" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal mb-3">أنظمة الصوت والدي جي</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">أحدث أجهزة الصوت وشاشات العرض العملاقة لضمان أجواء
+                        احتفالية لا تُنسى.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION MAP SECTION -->
+    <section id="location" class="py-24 bg-offwhite border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-charcoal mb-3">موقع القاعة</h2>
+                <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-xl mx-auto">تفضلوا بزيارتنا، نرحب بكم دائماً في موقعنا المتميز</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-3xl shadow-lg border border-gold-400/20 overflow-hidden">
+                <div class="w-full h-96 rounded-2xl overflow-hidden relative">
+                    <iframe src="https://maps.google.com/maps?q=31.51748999531629,31.839207484362735&z=16&output=embed"
+                        class="w-full h-full border-0" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="p-4 flex flex-col sm:flex-row items-center justify-between gap-4 mt-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3>دمياط-راس البر- شارع النيل- امام بلبن</h3>
+                        </div>
+                    </div>
+                    <a href="https://www.google.com/maps?q=31.51748999531629,31.839207484362735" target="_blank"
+                        class="px-6 py-2.5 bg-gold-500 text-charcoal font-bold rounded-full hover:bg-gold-400 transition-all text-xs flex items-center gap-2">
+                        <span>فتح في خرائط Google</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-charcoal text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-gold-400 mb-3">تواصل معنا</h2>
+                <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-300 max-w-xl mx-auto">يسعدنا تواصلكم معنا للحجز والاستفسار عن كافة تفاصيل مناسبتكم
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <a href="tel:01096535844"
+                    class="bg-white/5 border border-gold-400/20 p-8 rounded-2xl text-center hover:bg-gold-400/10 hover:border-gold-400 transition-all group flex flex-col items-center">
+                    <div
+                        class="w-14 h-14 rounded-full bg-gold-400/20 text-gold-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-gray-400 mb-1">الاتصال المباشر</span>
+                    <span class="text-lg font-bold dir-ltr text-gold-300">01096535844</span>
+                </a>
+
+                <a href="https://wa.me/201096535844" target="_blank"
+                    class="bg-white/5 border border-gold-400/20 p-8 rounded-2xl text-center hover:bg-emerald-500/10 hover:border-emerald-500 transition-all group flex flex-col items-center">
+                    <div
+                        class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-gray-400 mb-1">واتساب</span>
+                    <span class="text-lg font-bold dir-ltr text-emerald-300">01096535844</span>
+                </a>
+
+                <a href="mailto:khaledsalama737@gmail.com"
+                    class="bg-white/5 border border-gold-400/20 p-8 rounded-2xl text-center hover:bg-gold-400/10 hover:border-gold-400 transition-all group flex flex-col items-center">
+                    <div
+                        class="w-14 h-14 rounded-full bg-gold-400/20 text-gold-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-gray-400 mb-1">البريد الإلكتروني</span>
+                    <span class="text-sm font-semibold text-gold-300 break-all">khaledsalama737@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-8 border-t border-white/10 text-center text-xs text-gray-500">
+        <p>© 2026 Rose White Hall - جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- Lightbox Modal for Zooming Images -->
+    <div id="imageModal"
+        class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 transition-all duration-300">
+        <button onclick="closeModal()"
+            class="absolute top-6 left-6 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all text-xl">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <img id="modalImage" src="" alt="صورة مكبرة"
+            class="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl animate-modal" />
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // إعدادات الفايربيز الخاصة بك
+        const firebaseConfig = {
+            apiKey: "AIzaSyBOweMxvlzzc61BrvARWCuL-l4hxAL1QZ4",
+            authDomain: "rose-24271.firebaseapp.com",
+            databaseURL: "https://rose-24271-default-rtdb.firebaseio.com",
+            projectId: "rose-24271",
+            storageBucket: "rose-24271.firebasestorage.app",
+            messagingSenderId: "997165462785",
+            appId: "1:997165462785:web:de7e6583c30eda868a5700",
+            measurementId: "G-5KVFT2RY7Y"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        const defaultGallery = [
+            "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80&w=800"
+        ];
+
+        const GALLERY_PATH = "image";
+        let mySwiper = null;
+
+        async function initPage() {
+            let galleryImages = defaultGallery;
+
+            try {
+                const snapshot = await db.ref(GALLERY_PATH).once("value");
+
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    const firebaseImages = Object.entries(data)
+                        .map(([pushid, item]) => {
+                            if (typeof item === "string") return item;
+                            return item?.url || null;
+                        })
+                        .filter(url => typeof url === "string" && url.trim() !== "");
+
+                    if (firebaseImages.length > 0) {
+                        galleryImages = firebaseImages;
+                    }
+                }
+            } catch (error) {
+                console.error("Firebase error:", error);
+            }
+
+            renderSwiper(galleryImages);
+        }
+
+        function renderSwiper(images) {
+            const swiperWrapper = document.getElementById("swiper-wrapper");
+            if (!swiperWrapper) return;
+
+            swiperWrapper.innerHTML = images.map(url => `
+            <div class="swiper-slide bg-black flex items-center justify-center overflow-hidden">
+                <img src="${url}" 
+                     onclick="openModal('${url}')" 
+                     alt="صور قاعة Rose White" 
+                     class="w-full h-full object-contain cursor-pointer" />
+            </div>
+        `).join("");
+
+            // إعادة تهيئة Swiper.js بعد تحميل الصور
+            if (mySwiper) mySwiper.destroy(true, true);
+
+            mySwiper = new Swiper(".mySwiper", {
+                loop: true,
+                grabCursor: true,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        function openModal(url) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            if (modal && modalImg) {
+                modalImg.src = url;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        const imageModal = document.getElementById('imageModal');
+        if (imageModal) {
+            imageModal.addEventListener('click', (e) => {
+                if (e.target.id === 'imageModal') {
+                    closeModal();
+                }
+            });
+        }
+
+        initPage();
+    </script>
+</body>
+
+</html>
