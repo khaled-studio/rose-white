@@ -2,285 +2,900 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <title>rose-white | قاعة أفراح ومناسبات</title>
-    <meta name="description"
-        content="قاعة rose-white لإقامة أحلى الأفراح والمناسبات الخاصة، أفراح، خطوبة، وأعياد ميلاد بأعلى مستوى من الخدمة والرفاهية.">
-    <meta name="keywords"
-        content="rose-white, rose white, قاعة افراح, قاعات مناسبات, حجز قاعات زفاف, قاعة خطوبة, اسعار قاعات الافراح">
-
-    <meta property="og:title" content="rose-white">
-    <meta property="og:description" content="قاعة أفراح ومناسبات راقية لإقامة أجمل اللحظات.">
-    <meta property="og:url" content="https://rose-white.pages.dev">
-    <meta property="og:type" content="website">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rose White - قاعة المناسبات الفاخرة</title>
-    <meta name="google-site-verification" content="CWdET6kMuI9my1_8wirZH-GzNEGH_uu2Qsga3LlXb80" />
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23121212' stroke='%23D4AF37' stroke-width='3'/><text x='50%' y='62%' text-anchor='middle' fill='%23D4AF37' font-family='serif' font-size='42' font-weight='bold'>RW</text></svg>">
-
-    <!-- ربط ملفات الـ CSS الخاصة بك -->
-    <link rel="stylesheet" href="./output.css">
-    <link rel="stylesheet" href="./style.css">
-
-    <!-- Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rose White | قاعة روز وايت - رأس البر</title>
+    <!-- Google Fonts: Cairo & Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Alex+Brush&family=Cairo:wght@300;400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <!-- Swiper.js CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Swiper.js JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind = { config: { suppressWarnings: true } };
-    </script>
+    <style>
+        /* ==========================================================================
+           1. RESET & BASE STYLES
+           ========================================================================== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-dark: #090d10;
+            --emerald-primary: #10b981;
+            --emerald-glow: rgba(16, 185, 129, 0.35);
+            --gold-accent: #d4af37;
+            --silver-text: #f3f4f6;
+            --muted-text: #e5e7eb;
+            --glass-bg: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-hover: rgba(255, 255, 255, 0.18);
+            --radius-xl: 24px;
+            --radius-md: 14px;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--silver-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 
+           Fullscreen Background Using Provided Direct Link
+        */
+        .bg-fixed-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(to bottom, rgba(10, 8, 5, 0.25), rgba(10, 8, 5, 0.65)),
+                url('https://j.top4top.io/p_3947i3m7k1.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ==========================================================================
+           2. TRANSPARENT NAVBAR
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(9, 13, 16, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #059669, #10b981, #6ee7b7);
+            background-size: 200% 200%;
+            animation: gradientGlow 3s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 800;
+            box-shadow: 0 0 20px var(--emerald-glow), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #ffffff 0%, #a7f3d0 50%, #ffffff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineText 3s linear infinite;
+        }
+
+        @keyframes gradientGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes shineText {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--silver-text);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-speed);
+        }
+
+        .nav-btn:hover {
+            color: var(--emerald-primary);
+            background: var(--glass-hover);
+        }
+
+        .nav-btn.active {
+            color: var(--emerald-primary);
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--silver-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           3. MAIN CONTAINER & SPA SECTIONS
+           ========================================================================== */
+        main {
+            flex: 1;
+            padding-top: 90px;
+            padding-bottom: 40px;
+            display: flex;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            width: 100%;
+        }
+
+        .section-view {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 5%;
+            display: none;
+            opacity: 0;
+            transform: scale(0.98) translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .section-view.active-view {
+            display: block;
+        }
+
+        .section-view.fade-in {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .section-view.fade-out {
+            opacity: 0;
+            transform: scale(0.98) translateY(-10px);
+        }
+
+        .glass-card {
+            max-width: 1150px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION (RIGHT-STICKY FLOATING TEXT)
+           ========================================================================== */
+        .hero-floating {
+            text-align: right;
+            max-width: 650px;
+            margin-right: 0;
+            margin-left: auto;
+            padding: 1rem 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            background: rgba(16, 185, 129, 0.22);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: var(--emerald-primary);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-title {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1.25rem;
+            color: #ffffff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--muted-text);
+            line-height: 1.85;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.95);
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-gold-glow {
+            background: linear-gradient(135deg, var(--emerald-primary), #059669);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all var(--transition-speed);
+            box-shadow: 0 10px 25px var(--emerald-glow);
+            text-decoration: none;
+        }
+
+        .btn-gold-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.45);
+        }
+
+        /* ==========================================================================
+           5. GALLERY SECTION
+           ========================================================================== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--muted-text);
+            font-size: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 240px;
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* ==========================================================================
+           6. SERVICES SECTION
+           ========================================================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-speed);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--emerald-primary);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-desc {
+            color: var(--muted-text);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           7. BOOKING & SCROLLABLE DROPDOWN
+           ========================================================================== */
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            color: var(--silver-text);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--glass-border);
+            padding: 0.85rem 1.25rem;
+            border-radius: var(--radius-md);
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+            transition: border-color var(--transition-speed);
+        }
+
+        .form-control:focus {
+            border-color: var(--emerald-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-select-wrapper {
+            position: relative;
+            user-select: none;
+        }
+
+        .custom-select-trigger {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--glass-border);
+            padding: 0.85rem 1.25rem;
+            border-radius: var(--radius-md);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all var(--transition-speed);
+        }
+
+        .custom-select-trigger:hover,
+        .custom-select-wrapper.open .custom-select-trigger {
+            border-color: var(--emerald-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-options {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: #0d1520;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+            z-index: 50;
+            display: none;
+            max-height: 180px;
+            overflow-y: auto;
+            backdrop-filter: blur(20px);
+        }
+
+        .custom-options::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-options::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .custom-options::-webkit-scrollbar-thumb {
+            background: var(--emerald-primary);
+            border-radius: 10px;
+        }
+
+        .custom-select-wrapper.open .custom-options {
+            display: block;
+        }
+
+        .custom-option {
+            padding: 0.85rem 1.25rem;
+            color: var(--silver-text);
+            cursor: pointer;
+            transition: background var(--transition-speed), color var(--transition-speed);
+        }
+
+        .custom-option:hover,
+        .custom-option.selected {
+            background: rgba(16, 185, 129, 0.25);
+            color: var(--emerald-primary);
+            font-weight: 600;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-text p {
+            color: var(--muted-text);
+            font-size: 0.95rem;
+        }
+
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: var(--radius-md);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.25rem;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(9, 13, 16, 0.7);
+            backdrop-filter: blur(10px);
+            color: var(--muted-text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.85rem 1.25rem;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background: rgba(9, 13, 16, 0.96);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--glass-border);
+                transform: translateY(-150%);
+                transition: transform 0.35s ease;
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+            }
+
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+            }
+
+            .section-view {
+                padding: 0 1.25rem;
+            }
+
+            .hero-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-desc {
+                font-size: 1.05rem;
+            }
+
+            .booking-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .glass-card {
+                padding: 1.5rem;
+            }
+        }
+
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: white;
+            background: transparent;
+            border: none;
+            font-size: 42px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
-<body class="relative min-h-screen flex flex-col justify-between bg-offwhite">
+<body>
 
-    <!-- Navigation Header -->
-    <header
-        class="fixed top-0 left-0 right-0 z-40 bg-charcoal/90 backdrop-blur-md text-white border-b border-gold-400/20 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                <div
-                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gold-400 flex items-center justify-center text-gold-400 font-cursive text-xl sm:text-2xl font-bold">
-                    RW
-                </div>
-                <span
-                    class="font-amiri text-lg sm:text-xl tracking-wider text-gold-300 font-semibold hidden sm:inline">ROSE
-                    WHITE</span>
-            </div>
+    <!-- Fullscreen Fixed Background -->
+    <div class="bg-fixed-blur"></div>
 
-            <nav
-                class="flex items-center gap-3 sm:gap-8 text-xs sm:text-sm font-medium overflow-x-auto py-2 no-scrollbar">
-                <a href="#hero" class="hover:text-gold-400 transition-colors shrink-0">القاعة</a>
-                <a href="#gallery" class="hover:text-gold-400 transition-colors shrink-0">المعرض</a>
-                <a href="#services" class="hover:text-gold-400 transition-colors shrink-0">الخدمات</a>
-                <a href="#location" class="hover:text-gold-400 transition-colors shrink-0">الموقع</a>
-                <a href="#contact" class="hover:text-gold-400 transition-colors shrink-0">تواصل معنا</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Transparent Floating Navbar -->
+    <nav class="navbar">
+        <a class="logo-container" onclick="switchSection('home')">
+            <div class="logo-icon">RW</div>
+            <span class="logo-text">Rose White</span>
+        </a>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden px-4">
-        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 scale-105"
-            style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000');">
-        </div>
-
-        <div class="absolute inset-0 hero-overlay"></div>
-
-        <div class="relative z-10 text-center w-full max-w-4xl mx-auto flex flex-col items-center">
-            <div
-                class="w-16 h-16 sm:w-24 sm:h-24 mb-4 sm:mb-6 rounded-full border-2 border-gold-400/60 flex items-center justify-center p-2 bg-charcoal/40 backdrop-blur-sm animate-hero-text">
-                <span class="text-gold-400 font-cursive text-3xl sm:text-5xl">Rw</span>
-            </div>
-
-            <h1
-                class="text-3xl sm:text-6xl md:text-7xl font-bold tracking-wider font-serif gold-gradient-text mb-4 leading-tight animate-hero-text">
-                ROSE WHITE
-            </h1>
-
-            <p
-                class="text-lg sm:text-2xl text-gray-200 font-amiri font-light tracking-wide animate-hero-sub max-w-lg mb-8 px-2 leading-relaxed">
-                حيث تبدأ أجمل اللحظات والذكريات الخالدة
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center animate-hero-sub px-4">
-                <a href="order.html"
-                    class="inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-charcoal font-bold shadow-lg hover:shadow-gold-400/30 hover:scale-105 transition-all duration-300 text-sm sm:text-base">
-                    <span>احجز موعدك الآن</span>
-                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                </a>
-                <a href="#location" target="_self"
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-black/40 border border-gold-400/40 text-gold-300 font-semibold hover:bg-gold-400 hover:text-charcoal transition-all duration-300 text-sm sm:text-base">
-                    <span>موقع القاعة</span>
-                    <i data-lucide="map-pin" class="w-4 h-4"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- GALLERY SECTION -->
-    <section id="gallery" class="pt-24 pb-16 px-4 sm:px-6 max-w-4xl mx-auto w-full">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-charcoal mb-3">القاعة ومعرض الصور</h2>
-            <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-3"></div>
-            <p class="text-gray-600 max-w-xl mx-auto text-xs sm:text-sm">قاعة عصرية ومجهزة بأحدث التجهيزات لاستقبال جميع
-                مناسباتكم السعيدة</p>
-        </div>
-
-        <!-- Swiper Container -->
-        <div class="relative w-full bg-charcoal rounded-2xl overflow-hidden shadow-2xl border border-gold-400/30">
-            <div class="swiper mySwiper w-full">
-                <div id="swiper-wrapper" class="swiper-wrapper">
-                    <!-- Dynamic Slides -->
-                </div>
-
-                <!-- أزرار التنقل -->
-                <div class="swiper-button-next !text-gold-400"></div>
-                <div class="swiper-button-prev !text-gold-400"></div>
-
-                <!-- نقاط الأسفل -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section id="services" class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-charcoal mb-3">الخدمات</h2>
-                <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-4"></div>
-                <p class="text-gray-600 max-w-xl mx-auto">نقدم مجموعة متكاملة من الخدمات الفاخرة لضمان نجاح مناسبتكم</p>
-            </div>
-
-            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                    class="bg-offwhite p-8 rounded-2xl border border-gold-400/20 hover:border-gold-400 transition-all text-center group">
-                    <div
-                        class="w-16 h-16 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="sparkles" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-charcoal mb-3">تنسيق الديكور والإضاءة</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">تجهيزات حديثة وديكورات مخصصة تناسب ذوقكم الرفيع
-                        بأحدث تقنيات الإضاءة.</p>
-                </div>
-
-                <div
-                    class="bg-offwhite p-8 rounded-2xl border border-gold-400/20 hover:border-gold-400 transition-all text-center group">
-                    <div
-                        class="w-16 h-16 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="utensils" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-charcoal mb-3">خدمات الضيافة والبوفيه</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">قوائم طعام متنوعة وأطعمة فاخرة يُعدها أفضل الطهاة
-                        مع فريق ضيافة مدرب.</p>
-                </div>
-
-                <div
-                    class="bg-offwhite p-8 rounded-2xl border border-gold-400/20 hover:border-gold-400 transition-all text-center group">
-                    <div
-                        class="w-16 h-16 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="music" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-charcoal mb-3">أنظمة الصوت والدي جي</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">أحدث أجهزة الصوت وشاشات العرض العملاقة لضمان أجواء
-                        احتفالية لا تُنسى.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LOCATION MAP SECTION -->
-    <section id="location" class="py-24 bg-offwhite border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-charcoal mb-3">موقع القاعة</h2>
-                <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-4"></div>
-                <p class="text-gray-600 max-w-xl mx-auto">تفضلوا بزيارتنا، نرحب بكم دائماً في موقعنا المتميز</p>
-            </div>
-
-            <div class="bg-white p-4 rounded-3xl shadow-lg border border-gold-400/20 overflow-hidden">
-                <div class="w-full h-96 rounded-2xl overflow-hidden relative">
-                    <iframe src="https://maps.google.com/maps?q=31.51748999531629,31.839207484362735&z=16&output=embed"
-                        class="w-full h-full border-0" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-                <div class="p-4 flex flex-col sm:flex-row items-center justify-between gap-4 mt-2">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center">
-                            <i data-lucide="map-pin" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3>دمياط-راس البر- شارع النيل- امام بلبن</h3>
-                        </div>
-                    </div>
-                    <a href="https://www.google.com/maps?q=31.51748999531629,31.839207484362735" target="_blank"
-                        class="px-6 py-2.5 bg-gold-500 text-charcoal font-bold rounded-full hover:bg-gold-400 transition-all text-xs flex items-center gap-2">
-                        <span>فتح في خرائط Google</span>
-                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-24 bg-charcoal text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-amiri text-gold-400 mb-3">تواصل معنا</h2>
-                <div class="w-24 h-1 bg-gold-400 mx-auto rounded-full mb-4"></div>
-                <p class="text-gray-300 max-w-xl mx-auto">يسعدنا تواصلكم معنا للحجز والاستفسار عن كافة تفاصيل مناسبتكم
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <a href="tel:01096535844"
-                    class="bg-white/5 border border-gold-400/20 p-8 rounded-2xl text-center hover:bg-gold-400/10 hover:border-gold-400 transition-all group flex flex-col items-center">
-                    <div
-                        class="w-14 h-14 rounded-full bg-gold-400/20 text-gold-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="phone" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-xs text-gray-400 mb-1">الاتصال المباشر</span>
-                    <span class="text-lg font-bold dir-ltr text-gold-300">01096535844</span>
-                </a>
-
-                <a href="https://wa.me/201096535844" target="_blank"
-                    class="bg-white/5 border border-gold-400/20 p-8 rounded-2xl text-center hover:bg-emerald-500/10 hover:border-emerald-500 transition-all group flex flex-col items-center">
-                    <div
-                        class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-xs text-gray-400 mb-1">واتساب</span>
-                    <span class="text-lg font-bold dir-ltr text-emerald-300">01096535844</span>
-                </a>
-
-                <a href="mailto:khaledsalama737@gmail.com"
-                    class="bg-white/5 border border-gold-400/20 p-8 rounded-2xl text-center hover:bg-gold-400/10 hover:border-gold-400 transition-all group flex flex-col items-center">
-                    <div
-                        class="w-14 h-14 rounded-full bg-gold-400/20 text-gold-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="mail" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-xs text-gray-400 mb-1">البريد الإلكتروني</span>
-                    <span class="text-sm font-semibold text-gold-300 break-all">khaledsalama737@gmail.com</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-black py-8 border-t border-white/10 text-center text-xs text-gray-500">
-        <p>© 2026 Rose White Hall - جميع الحقوق محفوظة.</p>
-    </footer>
-
-    <!-- Lightbox Modal for Zooming Images -->
-    <div id="imageModal"
-        class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 transition-all duration-300">
-        <button onclick="closeModal()"
-            class="absolute top-6 left-6 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all text-xl">
-            <i data-lucide="x" class="w-6 h-6"></i>
+        <button class="mobile-toggle" onclick="toggleMobileNav()">
+            <i class="fa-solid fa-bars"></i>
         </button>
-        <img id="modalImage" src="" alt="صورة مكبرة"
-            class="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl animate-modal" />
+
+        <ul class="nav-links" id="navLinks">
+            <li><button class="nav-btn active" onclick="switchSection('home')">الرئيسية</button></li>
+            <li><button class="nav-btn" onclick="switchSection('gallery')">معرض الصور</button></li>
+            <li><button class="nav-btn" onclick="switchSection('services')">خدماتنا</button></li>
+            <li><button class="nav-btn" onclick="switchSection('booking')">الحجز والاستفسار</button></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container for SPA Views -->
+    <main>
+        <!-- 1. HOME SECTION (Right-Sticky Floating Text) -->
+        <section id="home" class="section-view active-view fade-in">
+            <div class="hero-floating">
+                <span class="badge">رأس البر - شارع النيل</span>
+                <h1 class="hero-title">قاعة Rose White للأفراح والمناسبات الفاخرة</h1>
+                <p class="hero-desc">تجربة استثنائية وأجواء مفعمة بالفخامة والأنشطة الساحرة على ضفاف رأس البر. صممت
+                    قاعتنا لتصنع من مناسباتكم ذكريات لا تُنسى.</p>
+                <div class="hero-actions">
+                    <button class="btn-gold-glow" onclick="switchSection('booking')">
+                        احجز موعدك الآن
+                        <i class="fa-solid fa-arrow-left" style="font-size: 0.85rem;"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. GALLERY SECTION -->
+        <section id="gallery" class="section-view">
+            <div class="glass-card">
+                <div class="section-header">
+                    <h2 class="section-title">معرض الصور</h2>
+                    <p class="section-subtitle">جولة بصريّة في أرجاء قاعة Rose White وتفاصيلها الملكية</p>
+                </div>
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </div>
+
+            <div id="lightboxModal" class="lightbox" onclick="closeLightbox()">
+                <button class="lightbox-close" aria-label="إغلاق الصورة"
+                    onclick="event.stopPropagation(); closeLightbox()">×</button>
+                <img id="lightboxImg" src="" alt="صورة مكبرة" onclick="event.stopPropagation()">
+            </div>
+
+        </section>
+
+        <!-- 3. SERVICES SECTION -->
+        <section id="services" class="section-view">
+            <div class="glass-card">
+                <div class="section-header">
+                    <h2 class="section-title">خدماتنا المميزة</h2>
+                    <p class="section-subtitle">نقدم خدمات متكاملة تضمن إقامة زفاف أو حفل أسطوري بكل المقاييس</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-ring"></i></div>
+                        <h3 class="service-title">حفلات الزفاف والخطوبة</h3>
+                        <p class="service-desc">تنظيم متكامل لأجمل ليالي العمر بأحدث الديكورات وتنسيقات الورد والكوشة
+                            الملكية.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3 class="service-title">أنظمة إضاءة وليزر متطورة</h3>
+                        <p class="service-desc">مؤثرات ضوئية ومسرحية ساحرة تضفي أجواء حماسية ورومانسية فريدة على
+                            المناسبة.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-music"></i></div>
+                        <h3 class="service-title">أحدث الأنظمة الصوتية</h3>
+                        <p class="service-desc">تجهيزات صوتية محترفة تناسب كبار المطربين والفرق الموسيقية مع دي جي
+                            محترف.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <h3 class="service-title">بوفيه مفتوح وخدمة ضيافة</h3>
+                        <p class="service-desc">قوائم طعام متنوعة وأطعمة فاخرة يُعدها أشهر الطهاة مع فريق ضيافة مدرب
+                            ببروتوكول راقٍ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. BOOKING SECTION -->
+        <section id="booking" class="section-view">
+            <div class="glass-card">
+                <div class="section-header">
+                    <h2 class="section-title">الحجز والاستفسار</h2>
+                    <p class="section-subtitle">تواصل معنا لحجز موعدك أو لمعرفة المواعيد المتاحة</p>
+                </div>
+                <div class="booking-container">
+                    <form class="booking-form" onsubmit="handleBooking(event)">
+                        <div class="form-group">
+                            <label>الاسم بالكامل</label>
+                            <input type="text" id="bookingName" class="form-control" placeholder="أدخل اسمك الكريم"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" id="bookingPhone" class="form-control" placeholder="رقم الموبايل للتواصل"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>تاريخ المناسبة المتوقع</label>
+                            <input type="date" id="bookingDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>نوع المناسبة</label>
+                            <div class="custom-select-wrapper" id="customSelect">
+                                <div class="custom-select-trigger">
+                                    <span id="selectedOptionText">زفاف</span>
+                                    <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
+                                </div>
+                                <div class="custom-options">
+                                    <div class="custom-option selected" data-value="زفاف">زفاف</div>
+                                    <div class="custom-option" data-value="خطوبة">خطوبة</div>
+                                    <div class="custom-option" data-value="مؤتمر / اجتماع">مؤتمر / اجتماع</div>
+                                    <div class="custom-option" data-value="كتب كتاب">كتب كتاب</div>
+                                    <div class="custom-option" data-value="قراء فاتحة">قراء فاتحة</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-gold-glow"
+                            style="margin-top: 1rem; width: 100%; justify-content: center;">
+                            إرسال طلب الحجز عبر واتساب
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </button>
+                    </form>
+
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="info-text">
+                                <h4>الموقع والعنوان</h4>
+                                <p>دمياط - رأس البر - شارع النيل - أمام بلبن</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="info-text">
+                                <h4>أرقام التواصل</h4>
+                                <p>01096535844</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                            <div class="info-text">
+                                <h4>مواعيد المعاينة</h4>
+                                <p>يومياً من 5 المغرب حتى 12 منتصف الليل</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+        <button class="lightbox-close">&times;</button>
+        <img src="" id="lightboxImg" class="lightbox-content" alt="تكبير الصورة">
     </div>
 
-    <script>
-        lucide.createIcons();
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 لقاعة Rose White - رأس البر</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    <!-- JavaScript Logic -->
 
-        // إعدادات الفايربيز الخاصة بك
+    <script>
+        const WHATSAPP_NUMBER = "201096535844";
+
         const firebaseConfig = {
             apiKey: "AIzaSyBOweMxvlzzc61BrvARWCuL-l4hxAL1QZ4",
             authDomain: "rose-24271.firebaseapp.com",
@@ -292,111 +907,230 @@
             measurementId: "G-5KVFT2RY7Y"
         };
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
-
-        const defaultGallery = [
-            "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80&w=800"
-        ];
-
-        const GALLERY_PATH = "image";
-        let mySwiper = null;
-
-        async function initPage() {
-            let galleryImages = defaultGallery;
-
-            try {
-                const snapshot = await db.ref(GALLERY_PATH).once("value");
-
-                if (snapshot.exists()) {
-                    const data = snapshot.val();
-                    const firebaseImages = Object.entries(data)
-                        .map(([pushid, item]) => {
-                            if (typeof item === "string") return item;
-                            return item?.url || null;
-                        })
-                        .filter(url => typeof url === "string" && url.trim() !== "");
-
-                    if (firebaseImages.length > 0) {
-                        galleryImages = firebaseImages;
-                    }
-                }
-            } catch (error) {
-                console.error("Firebase error:", error);
-            }
-
-            renderSwiper(galleryImages);
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
         }
 
-        function renderSwiper(images) {
-            const swiperWrapper = document.getElementById("swiper-wrapper");
-            if (!swiperWrapper) return;
+        const db = firebase.database();
 
-            swiperWrapper.innerHTML = images.map(url => `
-            <div class="swiper-slide bg-black flex items-center justify-center overflow-hidden">
-                <img src="${url}" 
-                     onclick="openModal('${url}')" 
-                     alt="صور قاعة Rose White" 
-                     class="w-full h-full object-contain cursor-pointer" />
-            </div>
-        `).join("");
+        let currentSectionId = 'home';
+        let isTransitioning = false;
+        let selectedBookingType = "زفاف";
 
-            // إعادة تهيئة Swiper.js بعد تحميل الصور
-            if (mySwiper) mySwiper.destroy(true, true);
+        document.addEventListener('DOMContentLoaded', async () => {
+            const grid = document.getElementById('galleryGrid');
 
-            mySwiper = new Swiper(".mySwiper", {
-                loop: true,
-                grabCursor: true,
-                spaceBetween: 10,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-            });
+            // تحميل الصور من Firebase فقط
+            if (grid) {
+                grid.innerHTML = '<p>جاري تحميل الصور...</p>';
+
+                try {
+                    const snapshot = await db.ref('image').once('value');
+                    let images = [];
+
+                    if (snapshot.exists()) {
+                        images = Object.values(snapshot.val())
+                            .map(item => {
+                                if (typeof item === 'string') {
+                                    return {
+                                        url: item,
+                                        title: 'قاعة Rose White'
+                                    };
+                                }
+
+                                if (item && typeof item.url === 'string') {
+                                    return {
+                                        url: item.url,
+                                        title: item.title || 'قاعة Rose White'
+                                    };
+                                }
+
+                                return null;
+                            })
+                            .filter(item =>
+                                item &&
+                                item.url.trim() !== ''
+                            );
+                    }
+
+                    if (images.length > 0) {
+                        grid.innerHTML = images.map(img => `
+                        <div class="gallery-item"
+                             onclick="openLightbox(this.querySelector('img').src)">
+                            <img
+                                src="${img.url}"
+                                alt="${img.title}"
+                                loading="lazy"
+                            >
+                            <div class="gallery-overlay">
+                                <span class="gallery-caption">${img.title}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                    } else {
+                        grid.innerHTML = '<p>لا توجد صور في المعرض حاليًا.</p>';
+                    }
+                } catch (error) {
+                    console.error('خطأ في تحميل صور Firebase:', error);
+                    grid.innerHTML = '<p>تعذر تحميل الصور. حاول مرة أخرى لاحقًا.</p>';
+                }
+            }
+
+            // القائمة المنسدلة الخاصة بنوع الحجز
+            const wrapper = document.getElementById('customSelect');
+
+            if (wrapper) {
+                const trigger = wrapper.querySelector('.custom-select-trigger');
+                const options = wrapper.querySelectorAll('.custom-option');
+
+                if (trigger) {
+                    trigger.addEventListener('click', event => {
+                        event.stopPropagation();
+                        wrapper.classList.toggle('open');
+                    });
+                }
+
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        options.forEach(item => item.classList.remove('selected'));
+                        option.classList.add('selected');
+
+                        selectedBookingType = option.getAttribute('data-value');
+
+                        const selectedText = document.getElementById('selectedOptionText');
+
+                        if (selectedText) {
+                            selectedText.innerText = selectedBookingType;
+                        }
+
+                        wrapper.classList.remove('open');
+                    });
+                });
+
+                document.addEventListener('click', () => {
+                    wrapper.classList.remove('open');
+                });
+            }
 
             if (window.lucide) {
                 lucide.createIcons();
             }
-        }
+        });
 
-        function openModal(url) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            if (modal && modalImg) {
-                modalImg.src = url;
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
+        // التنقل بين أقسام الموقع بدون إعادة تحميل الصفحة
+        function switchSection(targetSectionId) {
+            if (currentSectionId === targetSectionId || isTransitioning) {
+                return;
             }
-        }
 
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            if (modal) {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
+            const currentView = document.getElementById(currentSectionId);
+            const targetView = document.getElementById(targetSectionId);
+
+            if (!currentView || !targetView) {
+                return;
             }
-        }
 
-        const imageModal = document.getElementById('imageModal');
-        if (imageModal) {
-            imageModal.addEventListener('click', (e) => {
-                if (e.target.id === 'imageModal') {
-                    closeModal();
+            isTransitioning = true;
+
+            const navLinks = document.getElementById('navLinks');
+
+            if (navLinks) {
+                navLinks.classList.remove('open');
+            }
+
+            currentView.classList.remove('fade-in');
+            currentView.classList.add('fade-out');
+
+            setTimeout(() => {
+                currentView.classList.remove('active-view', 'fade-out');
+
+                document.querySelectorAll('.nav-btn').forEach(button => {
+                    button.classList.remove('active');
+                });
+
+                const activeNavButton = document.querySelector(
+                    `.nav-btn[onclick*="${targetSectionId}"]`
+                );
+
+                if (activeNavButton) {
+                    activeNavButton.classList.add('active');
                 }
-            });
+
+                targetView.classList.add('active-view');
+
+                void targetView.offsetWidth;
+
+                targetView.classList.add('fade-in');
+
+                currentSectionId = targetSectionId;
+                isTransitioning = false;
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 300);
         }
 
-        initPage();
+        // فتح وإغلاق قائمة الموبايل
+        function toggleMobileNav() {
+            const navLinks = document.getElementById('navLinks');
+
+            if (navLinks) {
+                navLinks.classList.toggle('open');
+            }
+        }
+
+        // تكبير صورة المعرض
+        function openLightbox(url) {
+            const modal = document.getElementById('lightboxModal');
+            const image = document.getElementById('lightboxImg');
+
+            if (modal && image) {
+                image.src = url;
+                modal.classList.add('active');
+            }
+        }
+
+        // إغلاق الصورة المكبرة
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // إرسال بيانات الحجز إلى واتساب
+        function handleBooking(event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById('bookingName');
+            const phoneInput = document.getElementById('bookingPhone');
+            const dateInput = document.getElementById('bookingDate');
+
+            if (!nameInput || !phoneInput || !dateInput) {
+                console.error('لم يتم العثور على جميع حقول الحجز.');
+                return;
+            }
+
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const date = dateInput.value;
+
+            const message = `مرحباً قاعة Rose White، أرغب في حجز موعد:
+- الاسم: ${name}
+- الهاتف: ${phone}
+- المناسبة: ${selectedBookingType}
+- التاريخ المتوقع: ${date}`;
+
+            const whatsappURL =
+                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappURL, '_blank');
+        }
     </script>
+
 </body>
 
 </html>
