@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rose White | قاعة روز وايت - رأس البر</title>
+    <title>Rose White | قاعة روز وايت</title>
+
     <!-- Google Fonts: Cairo & Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@400;500;700&display=swap"
         rel="stylesheet">
+
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -53,16 +55,15 @@
             justify-content: space-between;
         }
 
-        /* 
-           Fullscreen Background Using Provided Direct Link
-        */
+        /* Fullscreen Background */
         .bg-fixed-blur {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: linear-gradient(to bottom, rgba(10, 8, 5, 0.25), rgba(10, 8, 5, 0.65)),
+            background-image:
+                linear-gradient(to bottom, rgba(10, 8, 5, 0.25), rgba(10, 8, 5, 0.65)),
                 url('https://j.top4top.io/p_3947i3m7k1.jpeg');
             background-size: cover;
             background-position: center;
@@ -234,7 +235,7 @@
         }
 
         /* ==========================================================================
-           4. HERO SECTION (RIGHT-STICKY FLOATING TEXT)
+           4. HERO SECTION
            ========================================================================== */
         .hero-floating {
             text-align: right;
@@ -571,40 +572,87 @@
             font-size: 0.95rem;
         }
 
-        .lightbox-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+        /* ==========================================================================
+           LIGHTBOX FIX ONLY
+           عنصر واحد خارج الأقسام لمنع تأثير transform على position: fixed
+           ========================================================================== */
+        #lightboxModal.lightbox-modal {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+
             display: none;
+            align-items: center !important;
+            justify-content: center !important;
+
+            padding: 60px 16px 20px !important;
+            box-sizing: border-box;
+            overflow: hidden !important;
+            overscroll-behavior: contain;
+
+            background: rgba(0, 0, 0, 0.92);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+
+            z-index: 999999 !important;
+            isolation: isolate;
+        }
+
+        #lightboxModal.lightbox-modal.active {
+            display: flex !important;
+        }
+
+        #lightboxModal #lightboxImg {
+            display: block !important;
+            position: relative !important;
+            flex: 0 1 auto !important;
+
+            width: auto !important;
+            height: auto !important;
+
+            max-width: 100% !important;
+            max-height: calc(100vh - 100px) !important;
+            max-height: calc(100dvh - 100px) !important;
+
+            object-fit: contain !important;
+            object-position: center center !important;
+
+            margin: 0 auto !important;
+            transform: none !important;
+            border-radius: var(--radius-md);
+        }
+
+        #lightboxModal .lightbox-close {
+            position: absolute !important;
+            top: max(12px, env(safe-area-inset-top)) !important;
+            right: 18px !important;
+            z-index: 2;
+
+            width: 46px;
+            height: 46px;
+
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-        }
 
-        .lightbox-modal.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 85vh;
-            border-radius: var(--radius-md);
-            object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 25px;
             color: #fff;
-            font-size: 2rem;
+            font-family: inherit;
+            font-size: 34px;
+            line-height: 1;
             cursor: pointer;
-            background: transparent;
+
+            background: rgba(255, 255, 255, 0.12);
             border: none;
+            border-radius: 50%;
         }
 
+        body.lightbox-open {
+            overflow: hidden !important;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 1.25rem;
@@ -615,6 +663,9 @@
             font-size: 0.85rem;
         }
 
+        /* ==========================================================================
+           8. RESPONSIVE DESIGN
+           ========================================================================== */
         @media (max-width: 768px) {
             .navbar {
                 padding: 0.85rem 1.25rem;
@@ -669,48 +720,25 @@
             .glass-card {
                 padding: 1.5rem;
             }
-        }
 
+            #lightboxModal.lightbox-modal {
+                padding: 60px 10px 20px !important;
+            }
 
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background: rgba(0, 0, 0, 0.92);
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
+            #lightboxModal #lightboxImg {
+                max-width: 100% !important;
+                max-height: calc(100vh - 100px) !important;
+                max-height: calc(100dvh - 100px) !important;
+            }
 
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 95vw;
-            max-height: 90vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            color: white;
-            background: transparent;
-            border: none;
-            font-size: 42px;
-            cursor: pointer;
+            #lightboxModal .lightbox-close {
+                right: 12px !important;
+            }
         }
     </style>
 </head>
 
 <body>
-
     <!-- Fullscreen Fixed Background -->
     <div class="bg-fixed-blur"></div>
 
@@ -735,13 +763,15 @@
 
     <!-- Main Container for SPA Views -->
     <main>
-        <!-- 1. HOME SECTION (Right-Sticky Floating Text) -->
+        <!-- 1. HOME SECTION -->
         <section id="home" class="section-view active-view fade-in">
             <div class="hero-floating">
-                <span class="badge">رأس البر - شارع النيل</span>
                 <h1 class="hero-title">قاعة Rose White للأفراح والمناسبات الفاخرة</h1>
-                <p class="hero-desc">تجربة استثنائية وأجواء مفعمة بالفخامة والأنشطة الساحرة على ضفاف رأس البر. صممت
-                    قاعتنا لتصنع من مناسباتكم ذكريات لا تُنسى.</p>
+                <p class="hero-desc">
+                    تجربة استثنائية وأجواء مفعمة بالفخامة والأنشطة الساحرة على ضفاف رأس البر.
+                    صممت قاعتنا لتصنع من مناسباتكم ذكريات لا تُنسى.
+                </p>
+
                 <div class="hero-actions">
                     <button class="btn-gold-glow" onclick="switchSection('booking')">
                         احجز موعدك الآن
@@ -760,13 +790,6 @@
                 </div>
                 <div class="gallery-grid" id="galleryGrid"></div>
             </div>
-
-            <div id="lightboxModal" class="lightbox" onclick="closeLightbox()">
-                <button class="lightbox-close" aria-label="إغلاق الصورة"
-                    onclick="event.stopPropagation(); closeLightbox()">×</button>
-                <img id="lightboxImg" src="" alt="صورة مكبرة" onclick="event.stopPropagation()">
-            </div>
-
         </section>
 
         <!-- 3. SERVICES SECTION -->
@@ -776,6 +799,7 @@
                     <h2 class="section-title">خدماتنا المميزة</h2>
                     <p class="section-subtitle">نقدم خدمات متكاملة تضمن إقامة زفاف أو حفل أسطوري بكل المقاييس</p>
                 </div>
+
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon"><i class="fa-solid fa-ring"></i></div>
@@ -783,18 +807,21 @@
                         <p class="service-desc">تنظيم متكامل لأجمل ليالي العمر بأحدث الديكورات وتنسيقات الورد والكوشة
                             الملكية.</p>
                     </div>
+
                     <div class="service-card">
                         <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                         <h3 class="service-title">أنظمة إضاءة وليزر متطورة</h3>
                         <p class="service-desc">مؤثرات ضوئية ومسرحية ساحرة تضفي أجواء حماسية ورومانسية فريدة على
                             المناسبة.</p>
                     </div>
+
                     <div class="service-card">
                         <div class="service-icon"><i class="fa-solid fa-music"></i></div>
                         <h3 class="service-title">أحدث الأنظمة الصوتية</h3>
                         <p class="service-desc">تجهيزات صوتية محترفة تناسب كبار المطربين والفرق الموسيقية مع دي جي
                             محترف.</p>
                     </div>
+
                     <div class="service-card">
                         <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
                         <h3 class="service-title">بوفيه مفتوح وخدمة ضيافة</h3>
@@ -812,22 +839,25 @@
                     <h2 class="section-title">الحجز والاستفسار</h2>
                     <p class="section-subtitle">تواصل معنا لحجز موعدك أو لمعرفة المواعيد المتاحة</p>
                 </div>
+
                 <div class="booking-container">
                     <form class="booking-form" onsubmit="handleBooking(event)">
                         <div class="form-group">
                             <label>الاسم بالكامل</label>
-                            <input type="text" id="bookingName" class="form-control" placeholder="أدخل اسمك الكريم"
-                                required>
+                            <input type="text" id="bookingName" class="form-control" placeholder="أدخل اسمك " required>
                         </div>
+
                         <div class="form-group">
                             <label>رقم الهاتف</label>
                             <input type="tel" id="bookingPhone" class="form-control" placeholder="رقم الموبايل للتواصل"
                                 required>
                         </div>
+
                         <div class="form-group">
                             <label>تاريخ المناسبة المتوقع</label>
                             <input type="date" id="bookingDate" class="form-control" required>
                         </div>
+
                         <div class="form-group">
                             <label>نوع المناسبة</label>
                             <div class="custom-select-wrapper" id="customSelect">
@@ -835,6 +865,7 @@
                                     <span id="selectedOptionText">زفاف</span>
                                     <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
                                 </div>
+
                                 <div class="custom-options">
                                     <div class="custom-option selected" data-value="زفاف">زفاف</div>
                                     <div class="custom-option" data-value="خطوبة">خطوبة</div>
@@ -844,6 +875,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <button type="submit" class="btn-gold-glow"
                             style="margin-top: 1rem; width: 100%; justify-content: center;">
                             إرسال طلب الحجز عبر واتساب
@@ -859,6 +891,7 @@
                                 <p>دمياط - رأس البر - شارع النيل - أمام بلبن</p>
                             </div>
                         </div>
+
                         <div class="info-item">
                             <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                             <div class="info-text">
@@ -866,6 +899,7 @@
                                 <p>01096535844</p>
                             </div>
                         </div>
+
                         <div class="info-item">
                             <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
                             <div class="info-text">
@@ -879,20 +913,24 @@
         </section>
     </main>
 
-    <!-- Lightbox Modal -->
-    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <button class="lightbox-close">&times;</button>
-        <img src="" id="lightboxImg" class="lightbox-content" alt="تكبير الصورة">
+    <!-- FIXED LIGHTBOX: single instance outside all SPA sections -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true" onclick="closeLightbox()">
+
+        <button type="button" class="lightbox-close" aria-label="إغلاق الصورة"
+            onclick="event.stopPropagation(); closeLightbox()">×</button>
+
+        <img src="" id="lightboxImg" class="lightbox-content" alt="تكبير الصورة" onclick="event.stopPropagation()">
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 لقاعة Rose White - رأس البر</p>
+        <p>جميع الحقوق محفوظة &copy; 2026 لقاعة Rose White</p>
     </footer>
+
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-    <!-- JavaScript Logic -->
 
+    <!-- JavaScript Logic -->
     <script>
         const WHATSAPP_NUMBER = "201096535844";
 
@@ -917,10 +955,10 @@
         let isTransitioning = false;
         let selectedBookingType = "زفاف";
 
+        /* تحميل صور Firebase */
         document.addEventListener('DOMContentLoaded', async () => {
             const grid = document.getElementById('galleryGrid');
 
-            // تحميل الصور من Firebase فقط
             if (grid) {
                 grid.innerHTML = '<p>جاري تحميل الصور...</p>';
 
@@ -947,26 +985,23 @@
 
                                 return null;
                             })
-                            .filter(item =>
-                                item &&
-                                item.url.trim() !== ''
-                            );
+                            .filter(item => item && item.url.trim() !== '');
                     }
 
                     if (images.length > 0) {
                         grid.innerHTML = images.map(img => `
-                        <div class="gallery-item"
-                             onclick="openLightbox(this.querySelector('img').src)">
-                            <img
-                                src="${img.url}"
-                                alt="${img.title}"
-                                loading="lazy"
-                            >
-                            <div class="gallery-overlay">
-                                <span class="gallery-caption">${img.title}</span>
+                            <div class="gallery-item"
+                                 onclick="openLightbox(this.querySelector('img').src)">
+                                <img
+                                    src="${img.url}"
+                                    alt="${img.title}"
+                                    loading="lazy"
+                                >
+                                <div class="gallery-overlay">
+                                    <span class="gallery-caption">${img.title}</span>
+                                </div>
                             </div>
-                        </div>
-                    `).join('');
+                        `).join('');
                     } else {
                         grid.innerHTML = '<p>لا توجد صور في المعرض حاليًا.</p>';
                     }
@@ -976,7 +1011,7 @@
                 }
             }
 
-            // القائمة المنسدلة الخاصة بنوع الحجز
+            /* القائمة المنسدلة الخاصة بنوع الحجز */
             const wrapper = document.getElementById('customSelect');
 
             if (wrapper) {
@@ -1011,13 +1046,9 @@
                     wrapper.classList.remove('open');
                 });
             }
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
         });
 
-        // التنقل بين أقسام الموقع بدون إعادة تحميل الصفحة
+        /* التنقل بين أقسام الموقع بدون إعادة تحميل الصفحة */
         function switchSection(targetSectionId) {
             if (currentSectionId === targetSectionId || isTransitioning) {
                 return;
@@ -1072,7 +1103,7 @@
             }, 300);
         }
 
-        // فتح وإغلاق قائمة الموبايل
+        /* فتح وإغلاق قائمة الموبايل */
         function toggleMobileNav() {
             const navLinks = document.getElementById('navLinks');
 
@@ -1081,27 +1112,59 @@
             }
         }
 
-        // تكبير صورة المعرض
+        /* تكبير صورة المعرض - الإصلاح هنا فقط */
+        let lightboxPreviousScrollY = 0;
+
         function openLightbox(url) {
             const modal = document.getElementById('lightboxModal');
             const image = document.getElementById('lightboxImg');
 
-            if (modal && image) {
-                image.src = url;
-                modal.classList.add('active');
-            }
+            if (!modal || !image || !url) return;
+
+            lightboxPreviousScrollY = window.scrollY;
+
+            image.src = url;
+
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+
+            /* تثبيت الصفحة في مكانها أثناء فتح الصورة */
+            document.body.classList.add('lightbox-open');
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${lightboxPreviousScrollY}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.width = '100%';
         }
 
-        // إغلاق الصورة المكبرة
+        /* إغلاق الصورة والرجوع لنفس موضع الصفحة */
         function closeLightbox() {
             const modal = document.getElementById('lightboxModal');
 
-            if (modal) {
-                modal.classList.remove('active');
-            }
+            if (!modal || !modal.classList.contains('active')) return;
+
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+
+            document.body.classList.remove('lightbox-open');
+
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
+
+            window.scrollTo(0, lightboxPreviousScrollY);
         }
 
-        // إرسال بيانات الحجز إلى واتساب
+        /* إغلاق الصورة بزر Escape */
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        /* إرسال بيانات الحجز إلى واتساب */
         function handleBooking(event) {
             event.preventDefault();
 
@@ -1118,7 +1181,8 @@
             const phone = phoneInput.value.trim();
             const date = dateInput.value;
 
-            const message = `مرحباً قاعة Rose White، أرغب في حجز موعد:
+            const message =
+                `مرحباً قاعة Rose White، أرغب في حجز موعد:
 - الاسم: ${name}
 - الهاتف: ${phone}
 - المناسبة: ${selectedBookingType}
@@ -1130,7 +1194,6 @@
             window.open(whatsappURL, '_blank');
         }
     </script>
-
 </body>
 
 </html>
