@@ -99,49 +99,75 @@
         }
 
         .logo-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #059669, #10b981, #6ee7b7);
-            background-size: 200% 200%;
-            animation: gradientGlow 3s ease infinite;
+            width: auto;
+            height: auto;
+            border: none;
+            border-radius: 0;
+            background: none;
+            box-shadow: none;
+            animation: none;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 800;
-            box-shadow: 0 0 20px var(--emerald-glow), inset 0 0 10px rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+
+            color: #d4af67;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1;
+
+            text-shadow: none;
         }
 
         .logo-text {
             font-size: 1.4rem;
             font-weight: 800;
-            background: linear-gradient(120deg, #ffffff 0%, #a7f3d0 50%, #ffffff 100%);
-            background-size: 200% auto;
+
+            background: linear-gradient(90deg,
+                    #b89450 0%,
+                    #d4af67 35%,
+                    #b89450 70%,
+                    #d4af67 100%);
+
+            background-size: 100% 100%;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shineText 3s linear infinite;
+
+            position: relative;
+            isolation: isolate;
         }
 
-        @keyframes gradientGlow {
-            0% {
-                background-position: 0% 50%;
-            }
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
 
-            50% {
-                background-position: 100% 50%;
-            }
+            background: linear-gradient(90deg,
+                    #b89450 0%,
+                    #d4af67 30%,
+                    #fff8df 50%,
+                    #d4af67 70%,
+                    #b89450 100%);
 
-            100% {
-                background-position: 0% 50%;
-            }
+            background-size: 300% 100%;
+            background-position: 100% 0;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: roseWhiteShine 4s linear infinite;
         }
 
-        @keyframes shineText {
+        @keyframes roseWhiteShine {
+            from {
+                background-position: 100% 0;
+            }
+
             to {
-                background-position: 200% center;
+                background-position: -200% 0;
             }
         }
 
@@ -282,8 +308,8 @@
         }
 
         .btn-gold-glow {
-            background: linear-gradient(135deg, var(--emerald-primary), #059669);
-            color: #fff;
+            background: #d4af67;
+            color: #ffffff;
             font-weight: 700;
             padding: 0.85rem 2rem;
             border-radius: 50px;
@@ -294,13 +320,13 @@
             align-items: center;
             gap: 0.6rem;
             transition: all var(--transition-speed);
-            box-shadow: 0 10px 25px var(--emerald-glow);
+            box-shadow: 0 10px 25px #d4af67;
             text-decoration: none;
         }
 
         .btn-gold-glow:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.45);
+            box-shadow: 0 15px 30px #d4af67;
         }
 
         /* ==========================================================================
@@ -314,7 +340,7 @@
         .section-title {
             font-size: 2.2rem;
             font-weight: 800;
-            color: #fff;
+            color: #d4af67;
             margin-bottom: 0.5rem;
         }
 
